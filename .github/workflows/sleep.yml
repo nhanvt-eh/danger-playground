@@ -33,4 +33,7 @@ jobs:
       - name: Sleep for 30 seconds
         run: sleep 30s
         shell: bash
-            
+      # Intentionally fail this step
+      - name: Fail status check
+        run: exit 1
+        shell: bash
