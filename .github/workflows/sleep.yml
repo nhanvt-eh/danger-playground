@@ -33,7 +33,14 @@ jobs:
       - name: Sleep for 30 seconds
         run: sleep 30s
         shell: bash
-      # Intentionally fail this step
-      - name: Fail status check
-        run: exit 1
+
+      - name: Check file for 'fail'
+        run: |
+          if grep -q 'fail' ./aa; then
+            echo "File contains 'fail'"
+            exit 1
+          else
+            echo "File does not contain 'fail'"
+            exit 0
+          fi
         shell: bash
